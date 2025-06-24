@@ -17,9 +17,9 @@ export default function GuestLayout({
   return (
     <div className="flex min-h-screen flex-col items-center px-4 pt-6 sm:justify-center sm:pt-0">
       <Flash />
-      <Link href="/">
+      {/* <Link href="/">
         <Logo className="size-10" />
-      </Link>
+      </Link> */}
 
       <div className="mt-6 w-full max-w-sm">
         <Card.Header className="text-center">

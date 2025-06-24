@@ -67,7 +67,7 @@ export default function Login(args: LoginProps) {
           isRequired
         />
 
-        <div className="flex items-center justify-between">
+        {/* <div className="flex items-center justify-between">
           <Checkbox name="remember" onChange={(v) => setData("remember", v as any)}>
             Remember me
           </Checkbox>
@@ -76,16 +76,16 @@ export default function Login(args: LoginProps) {
               Forgot your password?
             </Link>
           )}
-        </div>
+        </div> */}
         <Button isPending={processing} type="submit">
           {processing && <Loader />}
           Log in
         </Button>
-        <div className="text-center">
+        {/* <div className="text-center">
           <Link href="/register" className="sm:text-sm" intent="secondary">
             Dont have account? Register
           </Link>
-        </div>
+        </div> */}
       </Form>
     </>
   )

@@ -12,7 +12,9 @@ export default function Home() {
       <Container className="py-12">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
           <CardHeader className="text-left lg:w-1/2">
-            <h2 className="text-2xl font-bold">Hi, I'm Ilman S</h2>
+            <h2 className="text-2xl font-bold">
+              Hi, I'm Ilman S <span className="animate-pulse text-teal-400">_</span>{" "}
+            </h2>
             <p className="text-muted-fg">5+ years of experience</p>
             <p className="text-muted-fg">
               A self-taught web developer who enjoys turning ideas into code.

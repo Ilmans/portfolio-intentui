@@ -1,36 +1,13 @@
-import type { SVGProps } from "react"
-import { Button } from "@/components/ui/button"
-import { Link } from "@/components/ui/link"
-import { TextField } from "@/components/ui/text-field"
+import type { SVGProps } from "react";
+import { Button } from "@/components/ui/button";
+import { Link } from "@/components/ui/link";
+import { TextField } from "@/components/ui/text-field";
 
 const navigation = {
-  solutions: [
-    { name: "Marketing", href: "#" },
-    { name: "Analytics", href: "#" },
-    { name: "Commerce", href: "#" },
-    { name: "Insights", href: "#" },
-  ],
-  support: [
-    { name: "Pricing", href: "#" },
-    { name: "Documentation", href: "#" },
-    { name: "Guides", href: "#" },
-    { name: "API Status", href: "#" },
-  ],
-  company: [
-    { name: "About", href: "/about" },
-    { name: "Blog", href: "#" },
-    { name: "Jobs", href: "#" },
-    { name: "Press", href: "#" },
-    { name: "Partners", href: "#" },
-  ],
-  legal: [
-    { name: "Privacy", href: "/privacy-policy" },
-    { name: "Terms", href: "/terms-of-service" },
-  ],
   social: [
     {
       name: "Facebook",
-      href: "#",
+      href: "https://facebook.com/ilman_sn",
       icon: (props: SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -43,7 +20,7 @@ const navigation = {
     },
     {
       name: "Instagram",
-      href: "#",
+      href: "https://instagram.com/ilman_sn",
       icon: (props: SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -56,7 +33,7 @@ const navigation = {
     },
     {
       name: "Twitter",
-      href: "https://x.com/intentui",
+      href: "https://x.com/ilman_sn ",
       icon: (props: SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
@@ -65,7 +42,7 @@ const navigation = {
     },
     {
       name: "GitHub",
-      href: "https://github.com/intentuilabs",
+      href: "https://github.com/ilmans",
       icon: (props: SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -76,21 +53,21 @@ const navigation = {
         </svg>
       ),
     },
-    {
-      name: "YouTube",
-      href: "#",
-      icon: (props: SVGProps<SVGSVGElement>) => (
-        <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
-          <path
-            fillRule="evenodd"
-            d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z"
-            clipRule="evenodd"
-          />
-        </svg>
-      ),
-    },
+    // {
+    //   name: "YouTube",
+    //   href: "#",
+    //   icon: (props: SVGProps<SVGSVGElement>) => (
+    //     <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
+    //       <path
+    //         fillRule="evenodd"
+    //         d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z"
+    //         clipRule="evenodd"
+    //       />
+    //     </svg>
+    //   ),
+    // },
   ],
-}
+};
 
 export function Footer() {
   return (
@@ -98,9 +75,8 @@ export function Footer() {
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
-      <div className="mx-auto w-1/2 max-w-7xl px-6 pt-20 pb-8 sm:pt-24 lg:px-8 lg:pt-32">
-
-        <div className="mt-16 border-slate-900/10 border-t pt-8 sm:mt-20 md:flex md:items-center md:justify-between lg:mt-24">
+      <div className="mx-auto w-1/2 max-w-7xl px-6  pb-8 sm:pt-24 lg:px-8 ">
+        <div className="mt-16 border-slate-900/10 border-t pt-8  md:flex md:items-center md:justify-between ">
           <div className="flex space-x-6 md:order-2">
             {navigation.social.map((item) => (
               <Link
@@ -114,14 +90,17 @@ export function Footer() {
             ))}
           </div>
           <p className="mt-8 text-muted-fg text-xs leading-5 md:order-1 md:mt-0">
-            &copy; 2020 Inertia.ts by{" "}
-            <Link target="_blank" href="https://x.com/intentui" className="font-semibold text-fg">
-              Intent UI
+            Built with <span className="text-red-500">❤️</span> by{" "}
+            <Link
+              target="_blank"
+              href="https://x.com/ilmansunanuddin"
+              className="font-semibold text-fg"
+            >
+              Ilman Sunanuddin
             </Link>
-            , Inc. All rights reserved.
           </p>
         </div>
       </div>
     </footer>
-  )
+  );
 }
