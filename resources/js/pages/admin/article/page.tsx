@@ -5,14 +5,9 @@ import DashboardLayout from "@/layouts/dashboard-layout";
 import { Head, router } from "@inertiajs/react";
 import React from "react";
 import { ArticleTable } from "./partials/article-table";
-import { Article } from "@/types/article";
+import { Article, ArticleProps } from "@/types/article";
 
-interface PageProps {
-  articles: {
-    data: Article[];
-  };
-}
-function index({ articles }: PageProps) {
+function index({ articles }: ArticleProps) {
   return (
     <>
       <Head title="Manage articles" />
