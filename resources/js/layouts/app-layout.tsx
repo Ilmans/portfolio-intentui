@@ -9,7 +9,7 @@ export default function AppLayout({ children }: PropsWithChildren) {
     <div>
       <Flash />
       <AppNavbar />
-      <Container className="lg:w-1/2 lg:mx-auto">{children}</Container>
+      <Container className="lg:w-3/5 lg:mx-auto">{children}</Container>
       <Footer />
     </div>
   );

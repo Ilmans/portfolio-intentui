@@ -3,10 +3,13 @@
 use App\Http\Controllers;
 use App\Http\Controllers\admin\ArticleController;
 use App\Http\Controllers\admin\BookController;
+use App\Http\Controllers\ArticleController as ControllersArticleController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', Controllers\HomeController::class)->name('home');
+
+Route::get('/articles', [ControllersArticleController::class, 'index'])->name('articles.public');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', Controllers\DashboardController::class)->name('dashboard');

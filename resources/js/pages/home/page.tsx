@@ -8,12 +8,13 @@ import SkillSet from "./skill-set";
 export default function Home() {
   return (
     <>
-      <Head title="Inertia Laravel Starter kit" />
+      <Head title="Hi, I'm Ilman S" />
       <Container className="py-12">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
           <CardHeader className="text-left lg:w-1/2">
             <h2 className="text-2xl font-bold">
-              Hi, I'm Ilman S <span className="animate-pulse text-teal-400">_</span>{" "}
+              Hi, I'm Ilman S{" "}
+              <span className="animate-pulse text-teal-400">_</span>{" "}
             </h2>
             <p className="text-muted-fg">5+ years of experience</p>
             <p className="text-muted-fg">

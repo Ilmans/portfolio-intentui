@@ -27,9 +27,9 @@ const navigations = [
     href: "/projects",
   },
   {
-    name: "Blog",
-    textValue: "blog",
-    href: "/blog",
+    name: "Articles",
+    textValue: "articles",
+    href: "/articles",
   },
   {
     name: "Books",
