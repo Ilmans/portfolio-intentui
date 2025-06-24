@@ -4,6 +4,7 @@ import React from "react";
 function SkillSet() {
   return (
     <Container>
+      <h2 className="text-2xl font-bold mb-4">My skill set</h2>
       <ul className="grid grid-cols-2 md:grid-cols-3 gap-3 text-muted-fg text-sm">
         <li className="underline underline-offset-4 decoration-teal-300">
           Web Programming
