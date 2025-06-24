@@ -4,8 +4,15 @@ import { Container } from "@/components/ui/container";
 import DashboardLayout from "@/layouts/dashboard-layout";
 import { Head, router } from "@inertiajs/react";
 import React from "react";
+import { ArticleTable } from "./partials/article-table";
+import { Article } from "@/types/article";
 
-function index() {
+interface PageProps {
+  articles: {
+    data: Article[];
+  };
+}
+function index({ articles }: PageProps) {
   return (
     <>
       <Head title="Manage articles" />
@@ -26,6 +33,10 @@ function index() {
         >
           Create Article
         </Button>
+      </Container>
+
+      <Container className="mt-4">
+        <ArticleTable articles={articles} />
       </Container>
     </>
   );

@@ -8,7 +8,7 @@ import { Form } from "@/components/ui/form";
 import { TextField } from "@/components/ui/text-field";
 import { Textarea } from "@/components/ui/textarea";
 import { Select } from "@/components/ui/select";
-import { Topic } from "@/types/article";
+import { STATUSARTICLE, Topic } from "@/types/article";
 import { router } from "@inertiajs/react";
 
 const validationSchema = yup.object().shape({
@@ -26,6 +26,7 @@ const validationSchema = yup.object().shape({
     .string()
     .min(100, "Content must be at least 100 characters")
     .required("Content is required"),
+  status: yup.string().required("Title is required"),
 });
 
 type ArticleFormValues = yup.InferType<typeof validationSchema>;
@@ -43,12 +44,15 @@ function ArticleForm({ topics }: CreatePageProps) {
       teaser: "",
       topic: undefined,
       content: "",
+      status: "published",
     },
   });
 
   const onSubmit = (data: ArticleFormValues) => {
     router.post(route("articles.store"), data);
   };
+
+  const statuses = ["published", "draft"];
 
   return (
     <Form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
@@ -120,6 +124,28 @@ function ArticleForm({ topics }: CreatePageProps) {
             validationBehavior="aria"
             errorMessage={error?.message}
           />
+        )}
+      />
+
+      <Controller
+        control={control}
+        name="status"
+        render={({ field: { value, onChange }, fieldState: { error } }) => (
+          <Select
+            onSelectionChange={onChange}
+            selectedKey={value}
+            isRequired
+            label="Status"
+          >
+            <Select.Trigger />
+            <Select.List items={STATUSARTICLE}>
+              {(item) => (
+                <Select.Option id={item.name} textValue={item.name}>
+                  {item.name}
+                </Select.Option>
+              )}
+            </Select.List>
+          </Select>
         )}
       />
 

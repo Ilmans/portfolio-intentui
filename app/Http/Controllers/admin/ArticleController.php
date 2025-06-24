@@ -13,7 +13,8 @@ class ArticleController extends Controller
 
     public function index()
     {
-        return inertia('admin/article/page');
+        $articles = Article::with('topic')->paginate(12);
+        return inertia('admin/article/page', compact("articles"));
     }
 
     public function create()
@@ -30,6 +31,7 @@ class ArticleController extends Controller
             'teaser' => $request->teaser,
             'topic_id' => $request->topic,
             'content' => $request->content,
+            'status' => $request->status,
         ]);
 
         flash('Your account has been successfully created.');
