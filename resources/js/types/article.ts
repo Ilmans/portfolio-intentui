@@ -8,3 +8,8 @@ export interface Article {
   created_at: string;
   updated_at: string;
 }
+
+export interface Topic {
+  id: number;
+  name: string;
+}

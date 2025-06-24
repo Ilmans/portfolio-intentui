@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('teaser');
             $table->string('slug');
             $table->text('content');
-            $table->string('cover_url');
+            $table->string('cover_url')->nullable();
             $table->timestamps();
         });
     }

@@ -8,6 +8,8 @@ import { Form } from "@/components/ui/form";
 import { TextField } from "@/components/ui/text-field";
 import { Textarea } from "@/components/ui/textarea";
 import { Select } from "@/components/ui/select";
+import { Topic } from "@/types/article";
+import { router } from "@inertiajs/react";
 
 const validationSchema = yup.object().shape({
   title: yup
@@ -28,9 +30,14 @@ const validationSchema = yup.object().shape({
 
 type ArticleFormValues = yup.InferType<typeof validationSchema>;
 
-function ArticleForm() {
-  const { handleSubmit, control } = useForm<ArticleFormValues>({
+interface CreatePageProps {
+  topics: Topic[];
+}
+
+function ArticleForm({ topics }: CreatePageProps) {
+  const { handleSubmit, control, setError } = useForm<ArticleFormValues>({
     resolver: yupResolver(validationSchema),
+
     defaultValues: {
       title: "",
       teaser: "",
@@ -40,16 +47,8 @@ function ArticleForm() {
   });
 
   const onSubmit = (data: ArticleFormValues) => {
-    console.log("Submitted data:", data);
+    router.post(route("articles.store"), data);
   };
-
-  const topics = [
-    { id: 1, name: "Adobe Photoshop" },
-    { id: 2, name: "Sketch" },
-    { id: 3, name: "Figma" },
-    { id: 4, name: "Adobe XD" },
-    { id: 5, name: "InVision" },
-  ];
 
   return (
     <Form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
@@ -71,9 +70,10 @@ function ArticleForm() {
       <Controller
         control={control}
         name="topic"
-        render={({ field, fieldState: { error } }) => (
+        render={({ field: { value, onChange }, fieldState: { error } }) => (
           <Select
-            {...field}
+            onSelectionChange={onChange}
+            selectedKey={value}
             isRequired
             label="Design software"
             placeholder="Select a software"
