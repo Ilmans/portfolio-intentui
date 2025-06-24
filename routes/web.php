@@ -2,6 +2,7 @@
 
 use App\Http\Controllers;
 use App\Http\Controllers\admin\ArticleController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', Controllers\HomeController::class)->name('home');
@@ -17,6 +18,15 @@ Route::middleware(['auth'])->group(function () {
             'edit' => 'articles.edit',
             'update' => 'articles.update',
             'destroy' => 'articles.destroy',
+        ]);
+
+        Route::resource('projects', ProjectController::class)->names([
+            'index' => 'projects.index',
+            'create' => 'projects.create',
+            'store' => 'projects.store',
+            'edit' => 'projects.edit',
+            'update' => 'projects.update',
+            'destroy' => 'projects.destroy',
 
         ]);
     });
