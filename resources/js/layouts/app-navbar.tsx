@@ -19,7 +19,7 @@ const navigations = [
   {
     name: "About",
     textValue: "about",
-    href: "/about",
+    href: "/",
   },
   {
     name: "Projects",

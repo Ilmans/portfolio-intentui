@@ -3,6 +3,7 @@ import AppLayout from "@/layouts/app-layout";
 import { Head } from "@inertiajs/react";
 import { CardHeader } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
+import SkillSet from "./skill-set";
 
 export default function Home() {
   return (
@@ -30,11 +31,8 @@ export default function Home() {
             />
           </div>
         </div>
-        <div>
-          <h2 className="font-bold text-2xl mt-8">My Skill Set</h2>
-            
-        </div>
       </Container>
+      <SkillSet />
     </>
   );
 }
