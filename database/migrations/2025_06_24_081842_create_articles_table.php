@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('topic_id')->references('id')->on('topics')->onDelete('cascade');
             $table->string('title');
+            $table->string('teaser');
             $table->string('slug');
             $table->text('content');
             $table->string('cover_url');

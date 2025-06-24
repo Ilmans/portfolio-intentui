@@ -15,9 +15,14 @@ import type { SharedData } from "@/types/shared";
 
 const navigations = [
   {
-    name: "Home",
-    textValue: "Home",
-    href: "/",
+    name: "Dashboard",
+    textValue: "dashboard",
+    href: "/dashboard",
+  },
+  {
+    name: "Articles",
+    textValue: "articles",
+    href: "/admin/articles",
   },
 ];
 
@@ -45,17 +50,6 @@ export function DashboardNavbar({
               {item.name}
             </Navbar.Item>
           ))}
-          <Navbar.Item
-            target="_blank"
-            href="https://intentui.com"
-            className="justify-between"
-          >
-            <Menu.Label>Documentation</Menu.Label>
-          </Navbar.Item>
-          <Navbar.Item target="_blank" href="https://blocks.intentui.com">
-            <IconBrandIntentui />
-            <Menu.Label>Blocks</Menu.Label>
-          </Navbar.Item>
         </Navbar.Section>
 
         <Navbar.Section className="ml-auto hidden gap-x-2 lg:flex">
