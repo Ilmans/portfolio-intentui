@@ -61,4 +61,12 @@ class ArticleController extends Controller
         flash('Article successfully updated.');
         return redirect(route('articles.index'));
     }
+
+
+    public function destroy($id)
+    {
+        Article::whereId($id)->delete();
+        flash('Article successfully deleted.');
+        return back();
+    }
 }

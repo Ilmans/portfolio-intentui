@@ -10,11 +10,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', Controllers\DashboardController::class)->name('dashboard');
 
     Route::prefix("/admin")->group(function () {
-        Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
-        Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
-        Route::post('/articles/store', [ArticleController::class, 'store'])->name('articles.store');
-        Route::get('/articles/edit/{id}', [ArticleController::class, 'edit'])->name('articles.edit');
-        Route::put('/articles/update/{id}', [ArticleController::class, 'update'])->name('articles.update');
+        Route::resource('articles', ArticleController::class)->names([
+            'index' => 'articles.index',
+            'create' => 'articles.create',
+            'store' => 'articles.store',
+            'edit' => 'articles.edit',
+            'update' => 'articles.update',
+            'destroy' => 'articles.destroy',
+
+        ]);
     });
 });
 

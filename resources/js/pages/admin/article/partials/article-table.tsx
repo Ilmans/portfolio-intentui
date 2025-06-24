@@ -3,9 +3,9 @@ import PaginationData from "@/components/pagination-data";
 import { Badge } from "@/components/ui/badge";
 import { Container } from "@/components/ui/container";
 import { Menu } from "@/components/ui/menu";
-import { Pagination } from "@/components/ui/pagination";
 import { Table } from "@/components/ui/table";
-import { Article, ArticleProps } from "@/types/article";
+import { ArticleProps } from "@/types/article";
+import { router } from "@inertiajs/react";
 import { IconDotsVertical } from "@intentui/icons";
 
 export function ArticleTable({ articles }: ArticleProps) {
@@ -48,7 +48,20 @@ export function ArticleTable({ articles }: ArticleProps) {
                         Edit
                       </Menu.Item>
                       <Menu.Separator />
-                      <Menu.Item isDanger>Delete</Menu.Item>
+                      <Menu.Item
+                        onAction={() => {
+                          if (
+                            window.confirm(
+                              "Are you sure you want to delete this item?"
+                            )
+                          ) {
+                            router.delete(route("articles.destroy", item.id));
+                          }
+                        }}
+                        isDanger={true}
+                      >
+                        Delete
+                      </Menu.Item>
                     </Menu.Content>
                   </Menu>
                 </div>
