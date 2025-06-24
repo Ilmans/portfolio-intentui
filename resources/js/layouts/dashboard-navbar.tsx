@@ -24,6 +24,16 @@ const navigations = [
     textValue: "articles",
     href: "/admin/articles",
   },
+  {
+    name: "Projects",
+    textValue: "projects",
+    href: "/admin/projects",
+  },
+  {
+    name: "Books",
+    textValue: "books",
+    href: "/admin/books",
+  },
 ];
 
 export function DashboardNavbar({

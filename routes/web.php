@@ -2,6 +2,7 @@
 
 use App\Http\Controllers;
 use App\Http\Controllers\admin\ArticleController;
+use App\Http\Controllers\admin\BookController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,16 @@ Route::middleware(['auth'])->group(function () {
             'edit' => 'projects.edit',
             'update' => 'projects.update',
             'destroy' => 'projects.destroy',
+
+        ]);
+
+        Route::resource('books', BookController::class)->names([
+            'index' => 'books.index',
+            'create' => 'books.create',
+            'store' => 'books.store',
+            'edit' => 'books.edit',
+            'update' => 'books.update',
+            'destroy' => 'books.destroy',
 
         ]);
     });
