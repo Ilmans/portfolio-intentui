@@ -1,8 +1,9 @@
-import AppLayout from "@/layouts/app-layout"
-import { Head } from "@inertiajs/react"
-import { CardHeader } from "@/components/ui/card"
-import { Container } from "@/components/ui/container"
-import type { SharedData } from "@/types/shared"
+
+import { Head } from "@inertiajs/react";
+import { CardHeader } from "@/components/ui/card";
+import { Container } from "@/components/ui/container";
+import type { SharedData } from "@/types/shared";
+import DashboardLayout from "@/layouts/dashboard-layout";
 
 export default function Dashboard({ auth }: SharedData) {
   return (
@@ -16,7 +17,7 @@ export default function Dashboard({ auth }: SharedData) {
         />
       </Container>
     </>
-  )
+  );
 }
 
-Dashboard.layout = (page: any) => <AppLayout children={page} />
+Dashboard.layout = (page: any) => <DashboardLayout children={page} />;

@@ -1,33 +1,35 @@
-import AppLayout from "@/layouts/app-layout"
-import { Head, useForm, usePage } from "@inertiajs/react"
-import type { SharedData } from "@/types/shared"
-import { Card } from "@/components/ui/card"
-import { Form } from "@/components/ui/form"
-import { TextField } from "@/components/ui/text-field"
-import { Link } from "@/components/ui/link"
-import { Button } from "@/components/ui/button"
-import SettingsLayout from "@/pages/settings/settings-layout"
+import AppLayout from "@/layouts/app-layout";
+import { Head, useForm, usePage } from "@inertiajs/react";
+import type { SharedData } from "@/types/shared";
+import { Card } from "@/components/ui/card";
+import { Form } from "@/components/ui/form";
+import { TextField } from "@/components/ui/text-field";
+import { Link } from "@/components/ui/link";
+import { Button } from "@/components/ui/button";
+import SettingsLayout from "@/pages/settings/settings-layout";
+import DashboardLayout from "@/layouts/dashboard-layout";
 
 interface Props {
-  mustVerifyEmail: boolean
-  status?: string
+  mustVerifyEmail: boolean;
+  status?: string;
 }
 
-const title = "Profile"
+const title = "Profile";
 
 export default function Profile({ mustVerifyEmail, status }: Props) {
-  const { auth } = usePage<SharedData>().props
-  const { data, setData, patch, errors, processing, recentlySuccessful } = useForm({
-    name: auth.user.name ?? "",
-    email: auth.user.email ?? "",
-  })
+  const { auth } = usePage<SharedData>().props;
+  const { data, setData, patch, errors, processing, recentlySuccessful } =
+    useForm({
+      name: auth.user.name ?? "",
+      email: auth.user.email ?? "",
+    });
 
   const submit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     patch("/settings/profile", {
       preserveScroll: true,
-    })
-  }
+    });
+  };
 
   return (
     <>
@@ -41,7 +43,11 @@ export default function Profile({ mustVerifyEmail, status }: Props) {
           </Card.Description>
         </Card.Header>
         <Card.Content>
-          <Form validationErrors={errors} onSubmit={submit} className="max-w-lg space-y-6">
+          <Form
+            validationErrors={errors}
+            onSubmit={submit}
+            className="max-w-lg space-y-6"
+          >
             <TextField
               id="name"
               label="Name"
@@ -91,17 +97,19 @@ export default function Profile({ mustVerifyEmail, status }: Props) {
               <Button type="submit" isDisabled={processing}>
                 Save
               </Button>
-              {recentlySuccessful && <p className="text-muted-fg text-sm">Saved.</p>}
+              {recentlySuccessful && (
+                <p className="text-muted-fg text-sm">Saved.</p>
+              )}
             </div>
           </Form>
         </Card.Content>
       </Card>
     </>
-  )
+  );
 }
 
 Profile.layout = (page: any) => (
-  <AppLayout>
+  <DashboardLayout>
     <SettingsLayout children={page} />
-  </AppLayout>
-)
+  </DashboardLayout>
+);

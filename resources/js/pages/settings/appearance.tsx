@@ -1,24 +1,30 @@
-import { Card } from "@/components/ui/card"
-import AppLayout from "@/layouts/app-layout"
-import SettingsLayout from "@/pages/settings/settings-layout"
-import { type Theme, useTheme } from "@/hooks/use-theme"
-import { IconDeviceDesktop2, IconMoon, IconSun } from "@intentui/icons"
-import { Choicebox } from "@/components/ui/choicebox"
-import { Head } from "@inertiajs/react"
+import { Card } from "@/components/ui/card";
+import AppLayout from "@/layouts/app-layout";
+import SettingsLayout from "@/pages/settings/settings-layout";
+import { type Theme, useTheme } from "@/hooks/use-theme";
+import { IconDeviceDesktop2, IconMoon, IconSun } from "@intentui/icons";
+import { Choicebox } from "@/components/ui/choicebox";
+import { Head } from "@inertiajs/react";
+import DashboardLayout from "@/layouts/dashboard-layout";
 
 interface Themes {
-  value: Theme
-  icon: React.FC<React.SVGAttributes<SVGSVGElement>>
-  label: string
-  description: string
+  value: Theme;
+  icon: React.FC<React.SVGAttributes<SVGSVGElement>>;
+  label: string;
+  description: string;
 }
 
-const title = "Appearance"
+const title = "Appearance";
 
 export default function Appearance() {
-  const { theme, updateTheme } = useTheme()
+  const { theme, updateTheme } = useTheme();
   const themes: Themes[] = [
-    { value: "light", icon: IconSun, label: "Light", description: "Ideal for daytime use." },
+    {
+      value: "light",
+      icon: IconSun,
+      label: "Light",
+      description: "Ideal for daytime use.",
+    },
     {
       value: "dark",
       icon: IconMoon,
@@ -31,7 +37,7 @@ export default function Appearance() {
       label: "System",
       description: "Automatically match the theme with your system settings.",
     },
-  ]
+  ];
 
   return (
     <>
@@ -42,7 +48,8 @@ export default function Appearance() {
           <Card.Title>{title}</Card.Title>
 
           <Card.Description className="max-w-lg">
-            Choose the most comfortable theme to make your experience using this app more enjoyable.
+            Choose the most comfortable theme to make your experience using this
+            app more enjoyable.
           </Card.Description>
         </Card.Header>
 
@@ -51,7 +58,7 @@ export default function Appearance() {
             selectedKeys={new Set([theme])}
             onSelectionChange={(v) => {
               // @ts-ignore
-              updateTheme([...v][0])
+              updateTheme([...v][0]);
             }}
             columns={1}
             gap={0}
@@ -71,11 +78,11 @@ export default function Appearance() {
         </Card.Content>
       </Card>
     </>
-  )
+  );
 }
 
 Appearance.layout = (page: any) => (
-  <AppLayout>
+  <DashboardLayout>
     <SettingsLayout children={page} />
-  </AppLayout>
-)
+  </DashboardLayout>
+);

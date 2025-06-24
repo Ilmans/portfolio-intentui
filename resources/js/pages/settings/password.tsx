@@ -6,6 +6,7 @@ import { TextField } from "@/components/ui/text-field"
 import { Button } from "@/components/ui/button"
 import AppLayout from "@/layouts/app-layout"
 import SettingsLayout from "@/pages/settings/settings-layout"
+import DashboardLayout from "@/layouts/dashboard-layout"
 
 const title = "Change Password"
 
@@ -102,7 +103,7 @@ export default function Password() {
 }
 
 Password.layout = (page: any) => (
-  <AppLayout>
+  <DashboardLayout>
     <SettingsLayout children={page} />
-  </AppLayout>
+  </DashboardLayout>
 )
