@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', Controllers\HomeController::class)->name('home');
 
 Route::get('/articles', [ControllersArticleController::class, 'index'])->name('articles.public');
+Route::get('/articles/{article:slug}', [ControllersArticleController::class, 'show'])->name('articles.show.public');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', Controllers\DashboardController::class)->name('dashboard');

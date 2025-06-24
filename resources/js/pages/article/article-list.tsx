@@ -19,7 +19,7 @@ function ArticleList({ articles }: ArticleProps) {
               ?.filter((article) => article.status === "published")
               .map((article) => (
                 <li key={article.id}>
-                  <a href={`/artikel/${article.slug}`} className="group">
+                  <a href={`/articles/${article.slug}`} className="group">
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:underline">
                       {article.title}
                     </h3>

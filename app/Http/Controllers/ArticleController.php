@@ -18,4 +18,10 @@ class ArticleController extends Controller
             'articles' => $articles
         ]);
     }
+
+    public function show(Article $article)
+    {
+        $article->load('topic');
+        return inertia('article/show', compact('article'));
+    }
 }
