@@ -37,4 +37,28 @@ class ArticleController extends Controller
         flash('Your account has been successfully created.');
         return redirect(route('articles.index'));
     }
+
+    public function edit($id)
+    {
+        $topics = Topic::all();
+        $article = Article::with('topic')->find($id);
+        return inertia('admin/article/edit', compact('topics', 'article'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $article = Article::findOrFail($id);
+
+        $article->update([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+            'teaser' => $request->teaser,
+            'topic_id' => $request->topic,
+            'content' => $request->content,
+            'status' => $request->status,
+        ]);
+
+        flash('Article successfully updated.');
+        return redirect(route('articles.index'));
+    }
 }

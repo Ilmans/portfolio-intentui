@@ -6,6 +6,7 @@ export interface Article {
   id: number;
   topic_id: number;
   title: string;
+  teaser: string;
   slug: string;
   content: string;
   status: string;

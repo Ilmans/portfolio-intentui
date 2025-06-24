@@ -8,7 +8,7 @@ import { Form } from "@/components/ui/form";
 import { TextField } from "@/components/ui/text-field";
 import { Textarea } from "@/components/ui/textarea";
 import { Select } from "@/components/ui/select";
-import { STATUSARTICLE, Topic } from "@/types/article";
+import { Article, STATUSARTICLE, Topic } from "@/types/article";
 import { router } from "@inertiajs/react";
 
 const validationSchema = yup.object().shape({
@@ -33,26 +33,29 @@ type ArticleFormValues = yup.InferType<typeof validationSchema>;
 
 interface CreatePageProps {
   topics: Topic[];
+  article: Article | null;
 }
 
-function ArticleForm({ topics }: CreatePageProps) {
+function ArticleForm({ topics, article }: CreatePageProps) {
   const { handleSubmit, control, setError } = useForm<ArticleFormValues>({
     resolver: yupResolver(validationSchema),
 
     defaultValues: {
-      title: "",
-      teaser: "",
-      topic: undefined,
-      content: "",
-      status: "published",
+      title: article?.title ?? "",
+      teaser: article?.teaser ?? "",
+      topic: article?.topic?.id ?? undefined,
+      content: article?.content ?? "",
+      status: article?.status ?? "published",
     },
   });
 
   const onSubmit = (data: ArticleFormValues) => {
-    router.post(route("articles.store"), data);
+    if (article) {
+      router.put(route("articles.update", { id: article.id }), data);
+    } else {
+      router.post(route("articles.store"), data);
+    }
   };
-
-  const statuses = ["published", "draft"];
 
   return (
     <Form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
@@ -150,7 +153,7 @@ function ArticleForm({ topics }: CreatePageProps) {
       />
 
       <Button intent="secondary" className="mt-4" type="submit">
-        Save Article
+        {article ? "Update " : "Save "} Article
       </Button>
     </Form>
   );

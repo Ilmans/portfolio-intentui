@@ -4,27 +4,28 @@ import DashboardLayout from "@/layouts/dashboard-layout";
 import { Head } from "@inertiajs/react";
 import React from "react";
 import ArticleForm from "./partials/article-form";
-import { Topic } from "@/types/article";
+import { Article, Topic } from "@/types/article";
 
 interface CreatePageProps {
   topics: Topic[];
+  article: Article;
 }
-function create({ topics }: CreatePageProps) {
+function edit({ topics, article }: CreatePageProps) {
   return (
     <div>
       <Head title="Create Article" />
       <Container className="py-14">
         <CardHeader
-          title="Create an article"
-          description="Create new article to publish"
+          title="Edit an article"
+          description="Edit current article"
         />
       </Container>
       <Container className="lg:w-2xl">
-        <ArticleForm article={null} topics={topics} />
+        <ArticleForm article={article} topics={topics} />
       </Container>
     </div>
   );
 }
 
-export default create;
-create.layout = (page: any) => <DashboardLayout children={page} />;
+export default edit;
+edit.layout = (page: any) => <DashboardLayout children={page} />;

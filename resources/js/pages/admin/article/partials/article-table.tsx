@@ -22,7 +22,7 @@ export function ArticleTable({ articles }: ArticleProps) {
         </Table.Header>
         <Table.Body items={articles.data}>
           {(item) => (
-            <Table.Row href="d" id={item.id}>
+            <Table.Row href="#" id={item.id}>
               <Table.Cell>{item.id}</Table.Cell>
               <Table.Cell>{item.title}</Table.Cell>
               <Table.Cell>{item.topic?.name}</Table.Cell>
@@ -44,7 +44,9 @@ export function ArticleTable({ articles }: ArticleProps) {
                     </Menu.Trigger>
                     <Menu.Content aria-label="Actions" placement="left top">
                       <Menu.Item>View</Menu.Item>
-                      <Menu.Item>Edit</Menu.Item>
+                      <Menu.Item href={route("articles.edit", { id: item.id })}>
+                        Edit
+                      </Menu.Item>
                       <Menu.Separator />
                       <Menu.Item isDanger>Delete</Menu.Item>
                     </Menu.Content>
