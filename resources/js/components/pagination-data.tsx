@@ -31,7 +31,7 @@ const PaginationData: React.FC<PaginationDataProps> = ({
                 {link.label}
               </Pagination.Item>
             ))}
-          <Pagination.Item segment="next" href={nextPageUrl} />
+          <Pagination.Item  segment="next" href={nextPageUrl} />
           <Pagination.Item segment="last" href={links[links.length - 2]?.url} />
         </Pagination.List>
       </Pagination>

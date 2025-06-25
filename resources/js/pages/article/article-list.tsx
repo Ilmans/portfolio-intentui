@@ -1,8 +1,7 @@
-import PaginationData from "@/components/pagination-data";
-import { Container } from "@/components/ui/container";
-import { Pagination } from "@/components/ui/pagination";
+import PaginationDataLazy from "@/components/pagination-data-lazy";
 import { useLoadInitialLazyData } from "@/hooks/use-load-initial-lazydata";
 import { ArticleProps } from "@/types/article";
+import SkeletonArticles from "./partials/skeleton-article";
 
 function ArticleList({ articles }: ArticleProps) {
   const { loadingData, onChangePage } = useLoadInitialLazyData(
@@ -12,6 +11,7 @@ function ArticleList({ articles }: ArticleProps) {
 
   return (
     <div>
+      {loadingData && <SkeletonArticles />}
       {articles && (
         <>
           <ul className="space-y-6 divide-gray-700">
@@ -45,6 +45,15 @@ function ArticleList({ articles }: ArticleProps) {
               ))}
           </ul>
         </>
+      )}
+
+      {articles && (
+        <PaginationDataLazy
+          links={articles.links}
+          prevPageUrl={articles.prev_page_url}
+          nextPageUrl={articles.next_page_url}
+          goToPage={onChangePage}
+        />
       )}
     </div>
   );
