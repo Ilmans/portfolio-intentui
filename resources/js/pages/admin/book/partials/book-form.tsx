@@ -10,13 +10,16 @@ import { TextField } from "@/components/ui/text-field";
 import { Textarea } from "@/components/ui/textarea";
 import { router } from "@inertiajs/react";
 
-import { Book, BookFormValues } from "@/types/book"; // pastikan kamu sudah buat tipe ini
+import { Book, BookFormValues, STATUSBOOK } from "@/types/book"; // pastikan kamu sudah buat tipe ini
+import { Select } from "@/components/ui/select";
 
 const validationSchema = yup.object({
   title: yup.string().required("Title is required"),
   about: yup.string().required("About is required"),
-  url: yup.string().url("Must be a valid URL").nullable().default(null),
+  url: yup.string().nullable().default(null),
   cover_url: yup.mixed<FileList>().nullable().default(null),
+  pages: yup.number().required("book pages is required"),
+  status: yup.string().required("Status book is rquired"),
 });
 
 interface BookFormProps {
@@ -33,6 +36,8 @@ function BookForm({ book }: BookFormProps) {
       about: book?.about ?? "",
       url: book?.url ?? null,
       cover_url: null,
+      pages: book?.pages ?? 10,
+      status: "published",
     },
   });
 
@@ -41,6 +46,8 @@ function BookForm({ book }: BookFormProps) {
 
     formData.append("title", data.title);
     formData.append("about", data.about);
+    formData.append("pages", data.pages.toString());
+    formData.append("status", data.status);
     if (data.cover_url && data.cover_url.length > 0) {
       formData.append("cover_url", data.cover_url[0]);
     }
@@ -125,6 +132,45 @@ function BookForm({ book }: BookFormProps) {
             value={field.value ?? ""}
             label="Book URL (Optional)"
             placeholder="https://example.com"
+            isInvalid={!!error}
+            validationBehavior="aria"
+            errorMessage={error?.message}
+          />
+        )}
+      />
+
+      <Controller
+        control={control}
+        name="status"
+        render={({ field: { value, onChange }, fieldState: { error } }) => (
+          <Select
+            onSelectionChange={onChange}
+            selectedKey={value}
+            isRequired
+            label="Status"
+          >
+            <Select.Trigger />
+            <Select.List items={STATUSBOOK}>
+              {(item) => (
+                <Select.Option id={item.name} textValue={item.name}>
+                  {item.name}
+                </Select.Option>
+              )}
+            </Select.List>
+          </Select>
+        )}
+      />
+
+      <Controller
+        control={control}
+        name="pages"
+        render={({ field, fieldState: { error } }) => (
+          <TextField
+            {...field}
+            type="number"
+            label="Book pages"
+            placeholder="Enter book pages"
+            isRequired
             isInvalid={!!error}
             validationBehavior="aria"
             errorMessage={error?.message}

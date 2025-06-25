@@ -27,15 +27,20 @@ class BookController extends Controller
             'about' => 'required|string',
             'cover_url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'url' => 'required|string|max:255',
+            'pages' => 'required',
+            'status' => 'required'
         ]);
 
         $coverPath = $request->file('cover_url')->store('books/covers', 'public');
+
 
         Book::create([
             'title' => $request->title,
             'about' => $request->about,
             'cover_url' => $coverPath,
             'url' => $request->url,
+            'pages' => $request->pages,
+            'status' => $request->status
         ]);
 
         flash('Book successfully created.');
@@ -57,6 +62,8 @@ class BookController extends Controller
             'about' => 'required|string',
             'cover_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'url' => 'required|string|max:255',
+            'pages' => 'required',
+            'status' => 'required'
         ]);
 
         if ($request->hasFile('cover_url')) {
@@ -74,6 +81,8 @@ class BookController extends Controller
             'about' => $request->about,
             'cover_url' => $coverPath,
             'url' => $request->url,
+            'pages' => $request->pages,
+            'status' => $request->status
         ]);
 
         flash('Book successfully updated.');

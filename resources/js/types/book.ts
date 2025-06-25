@@ -4,6 +4,8 @@ export interface Book {
   about: string;
   cover_url: string;
   url: string;
+  pages: number;
+  status : string;
   created_at: string;
   updated_at: string;
 }
@@ -13,6 +15,8 @@ export type BookFormValues = {
   about: string;
   url: string | null;
   cover_url: FileList | null;
+  pages: number;
+  status : string;
 };
 
 export interface BookProps {
@@ -25,3 +29,15 @@ export interface BookProps {
     links: { url: string | undefined; label: string; active: boolean }[];
   };
 }
+
+export const STATUSBOOK = [
+  {
+    name: "progress",
+  },
+  {
+    name: "draft",
+  },
+  {
+    name: "published",
+  },
+];

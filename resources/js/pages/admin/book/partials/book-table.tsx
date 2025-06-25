@@ -15,7 +15,7 @@ export function BookTable({ books }: BookProps) {
           <Table.Column>#</Table.Column>
           <Table.Column>Image</Table.Column>
           <Table.Column isRowHeader>Title</Table.Column>
-          <Table.Column>About</Table.Column>
+          <Table.Column>Pages</Table.Column>
           <Table.Column>URL</Table.Column>
           <Table.Column>Created At</Table.Column>
           <Table.Column />
@@ -36,7 +36,7 @@ export function BookTable({ books }: BookProps) {
                 )}
               </Table.Cell>
               <Table.Cell>{item.title}</Table.Cell>
-              <Table.Cell>{item.about}</Table.Cell>
+              <Table.Cell>{item.pages}</Table.Cell>
               <Table.Cell>
                 <a
                   href={item.url}
