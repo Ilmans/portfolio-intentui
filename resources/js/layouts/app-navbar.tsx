@@ -1,4 +1,4 @@
-import { usePage } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import {
   IconBrandIntentui,
   IconChevronLgDown,
@@ -43,9 +43,24 @@ export function AppNavbar({
   ...props
 }: React.ComponentProps<typeof Navbar>) {
   const page = usePage();
-  const { auth } = usePage<SharedData>().props;
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => setIsOpen(false), [page.url]);
+
+  function isCurrentRoute(
+    pageUrl: string | undefined,
+    itemHref: string
+  ): boolean {
+    if (!pageUrl) return false;
+    if (itemHref === "/") {
+      return pageUrl === "/";
+    }
+
+    return (
+      pageUrl === itemHref ||
+      pageUrl.startsWith(itemHref + "?") ||
+      pageUrl.startsWith(itemHref + "/")
+    );
+  }
   return (
     <Navbar
       className="lg:w-1/2 lg:mx-auto  lg:py-14 border-0 ring-0"
@@ -54,19 +69,18 @@ export function AppNavbar({
       {...props}
     >
       <Navbar.Nav className="bg-transparent border-0">
-        <div className="w-full flex justify-center">
-          <Navbar.Logo aria-label="Logo">
+        <div className="lg:w-full lg:flex lg:justify-center">
+          <Navbar.Logo className="hidden md:block" aria-label="Logo">
             <ThemeSwitcher />
           </Navbar.Logo>
-          <Navbar.Section className="">
+          <Navbar.Section className="mt-12 md:mt-0">
             {navigations.map((item) => (
               <Navbar.Item
-                className={"font-semibold text-2xl"}
-                isCurrent={item.href === page.url}
+                className="font-semibold"
+                isCurrent={isCurrentRoute(page.url, item.href)}
                 key={item.href}
-                href={item.href}
               >
-                {item.name}
+                <Link href={item.href}>{item.name}</Link>
               </Navbar.Item>
             ))}
           </Navbar.Section>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "@/components/ui/container";
 import { Pagination } from "@/components/ui/pagination";
-import { router } from "@inertiajs/react";
+import { Link, router } from "@inertiajs/react";
 
 interface PaginationDataProps {
   nextPageUrl: string | undefined;
@@ -18,21 +18,25 @@ const PaginationData: React.FC<PaginationDataProps> = ({
     <Container className="mt-8">
       <Pagination>
         <Pagination.List>
-          <Pagination.Item segment="first" href={links[1]?.url} />
-          <Pagination.Item segment="previous" href={prevPageUrl} />
+          <Pagination.Item segment="first">
+            <Link href={links[1]?.url} />
+          </Pagination.Item>
+          <Pagination.Item segment="previous">
+            <Link href={prevPageUrl} />
+          </Pagination.Item>
           {links
-            .filter((link) => Number(link.label)) // hanya nomor page
+            .filter((link) => Number(link.label))
             .map((link, idx) => (
-              <Pagination.Item
-                key={idx}
-                isCurrent={link.active}
-                href={link.url}
-              >
-                {link.label}
+              <Pagination.Item key={idx} isCurrent={link.active}>
+                <Link href={link.url}>{link.label}</Link>
               </Pagination.Item>
             ))}
-          <Pagination.Item  segment="next" href={nextPageUrl} />
-          <Pagination.Item segment="last" href={links[links.length - 2]?.url} />
+          <Pagination.Item segment="next">
+            <Link href={nextPageUrl} />
+          </Pagination.Item>
+          <Pagination.Item segment="last">
+            <Link href={links[links.length - 2]?.url} />
+          </Pagination.Item>
         </Pagination.List>
       </Pagination>
     </Container>
