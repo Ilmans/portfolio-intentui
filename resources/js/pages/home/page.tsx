@@ -18,10 +18,11 @@ export default function Home() {
             </h2>
             <p className="text-muted-fg">5+ years of experience</p>
             <p className="text-muted-fg">
-              A self-taught web developer who enjoys turning ideas into code.
-              I’m passionate about learning new things, reading books, and
-              exploring how technology can solve real problems. Always curious,
-              always improving — and always ready to build something awesome.
+              Hai, salam kenal. Saya Ilman, orang yang suka ngulik apa saja.
+              Mulai dari teknologi, ide-ide baru, sampai hal-hal kecil yang
+              sering bikin penasaran. Kadang berhasil jadi karya, kadang cuma
+              jadi catatan, yang terpenting, selalu ada hal baru untuk
+              dipelajari.
             </p>
           </CardHeader>
 

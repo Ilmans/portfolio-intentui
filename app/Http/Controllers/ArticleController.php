@@ -12,7 +12,7 @@ class ArticleController extends Controller
     {
 
         $articles = Inertia::optional(function () {
-            return Article::with('topic')->latest()->paginate(10);
+            return Article::with('topic')->latest()->paginate(9);
         });
         return inertia('article/index', [
             'articles' => $articles

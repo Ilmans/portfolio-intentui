@@ -2,6 +2,7 @@ import PaginationDataLazy from "@/components/pagination-data-lazy";
 import { useLoadInitialLazyData } from "@/hooks/use-load-initial-lazydata";
 import { ArticleProps } from "@/types/article";
 import SkeletonArticles from "./partials/skeleton-article";
+import PaginationData from "@/components/pagination-data";
 
 function ArticleList({ articles }: ArticleProps) {
   const { loadingData, onChangePage } = useLoadInitialLazyData(
@@ -48,11 +49,10 @@ function ArticleList({ articles }: ArticleProps) {
       )}
 
       {articles && (
-        <PaginationDataLazy
+        <PaginationData
           links={articles.links}
           prevPageUrl={articles.prev_page_url}
           nextPageUrl={articles.next_page_url}
-          goToPage={onChangePage}
         />
       )}
     </div>
