@@ -14,7 +14,7 @@ class ProjectController extends Controller
     {
 
         $projects = Inertia::optional(function () {
-            return Project::latest()->paginate(9);
+            return Project::latest()->whereStatus('publish')->paginate(9);
         });
         return inertia('project/index', [
             'projects' => $projects
