@@ -14,7 +14,7 @@ function ProjectList({ projects }: ProjectProps) {
     projects,
     "projects"
   );
-  console.log(projects);
+
   return (
     <div>
       {loadingData && <ProjectSkeleton />}

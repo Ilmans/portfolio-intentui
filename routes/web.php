@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\ArticleController;
 use App\Http\Controllers\admin\BookController;
 use App\Http\Controllers\admin\ProjectController as AdminProjectController;
 use App\Http\Controllers\ArticleController as ControllersArticleController;
+use App\Http\Controllers\BookController as ControllersBookController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +14,7 @@ Route::get('/', Controllers\HomeController::class)->name('home');
 Route::get('/articles', [ControllersArticleController::class, 'index'])->name('articles.public');
 Route::get('/articles/{article:slug}', [ControllersArticleController::class, 'show'])->name('articles.show.public');
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.public');
+Route::get('/books', [ControllersBookController::class, 'index'])->name('books.public');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', Controllers\DashboardController::class)->name('dashboard');
