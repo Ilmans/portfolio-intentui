@@ -24,8 +24,9 @@ function BookList({ books }: BookProps) {
             >
               <div className="w-full aspect-[2/3] bg-gray-100">
                 <img
-                  src={book.cover_url}
+                  src={`/storage/${book.cover_url}`}
                   alt={book.title}
+                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
               </div>

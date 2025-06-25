@@ -31,7 +31,8 @@ function ProjectList({ projects }: ProjectProps) {
                 >
                   <CardHeader className="p-0">
                     <img
-                      src={project.cover_url}
+                    loading="lazy"
+                      src={`/storage/${project.cover_url}`}
                       alt={project.name}
                       className="w-full h-30 object-cover"
                     />
