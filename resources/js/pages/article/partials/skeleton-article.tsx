@@ -9,14 +9,13 @@ export default function SkeletonArticles() {
       {Array.from({ length: 5 }).map((_, idx) => (
         <li key={idx}>
           <div className="py-2 space-y-2">
-            <Skeleton className="h-5 w-3/4" /> {/* Judul */}
+            <Skeleton className="h-5 w-3/4" />
             <div className="flex items-center gap-2">
-              <Skeleton className="h-3 w-20" /> {/* Topik */}
-              <Skeleton className="h-3 w-2" /> {/* Bullet */}
-              <Skeleton className="h-3 w-24" /> {/* Tanggal */}
+              <Skeleton className="h-3 w-20" />
+              <Skeleton className="h-3 w-2" />
+              <Skeleton className="h-3 w-24" />
             </div>
-            <Skeleton className="h-3 w-full" /> {/* Teaser baris 1 */}
-            <Skeleton className="h-3 w-5/6" /> {/* Teaser baris 2 */}
+            <Skeleton className="h-3 w-full" />
           </div>
         </li>
       ))}

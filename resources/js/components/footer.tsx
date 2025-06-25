@@ -75,7 +75,7 @@ export function Footer() {
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
-      <div className="mx-auto w-1/2 max-w-7xl px-6  pb-8 sm:pt-24 lg:px-8 ">
+      <div className="  max-w-7xl px-6  pb-8 sm:pt-24 lg:pt-2  ">
         <div className="mt-16 border-slate-900/10 border-t pt-8  md:flex md:items-center md:justify-between ">
           <div className="flex space-x-6 md:order-2">
             {navigation.social.map((item) => (
